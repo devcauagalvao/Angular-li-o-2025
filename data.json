@@ -1,0 +1,13 @@
+{
+  "students": [],
+  "courses": [
+    {
+      "id": 1,
+      "course": "sas"
+    },
+    {
+      "id": 2,
+      "course": "dsds"
+    }
+  ]
+}

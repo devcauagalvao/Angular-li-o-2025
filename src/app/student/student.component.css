@@ -1,0 +1,125 @@
+/* Container principal */
+.container {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Formulário */
+  form {
+    background: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Labels */
+  label.form-label {
+    font-weight: 600;
+    color: #333;
+  }
+  
+  /* Inputs e Select */
+  input.form-control,
+  select.form-control {
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    padding: 0.75rem;
+    transition: border-color 0.3s;
+  }
+  
+  input.form-control:focus,
+  select.form-control:focus {
+    border-color: #007bff;
+    box-shadow: none;
+  }
+  
+  /* Botão Salvar */
+  button.btn-primary {
+    background-color: #007bff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem 1.5rem;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+  
+  button.btn-primary:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Tabela */
+  table.table {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+  }
+  
+  table thead {
+    background-color: #007bff;
+    color: #ffffff;
+  }
+  
+  table thead th {
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  table tbody td,
+  table tbody th {
+    vertical-align: middle;
+    text-align: center;
+  }
+  
+  /* Ícones de funções */
+  .icon-group button {
+    margin-right: 8px;
+    border-radius: 6px;
+    padding: 6px 10px;
+    transition: background-color 0.3s;
+  }
+  
+  button.delete-btn {
+    background-color: #dc3545;
+    color: #fff;
+  }
+  
+  button.delete-btn:hover {
+    background-color: #a71d2a;
+  }
+  
+  button.edit-btn {
+    background-color: #ffc107;
+    color: #212529;
+  }
+  
+  button.edit-btn:hover {
+    background-color: #e0a800;
+  }
+  
+  /* Título */
+  h1 {
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    font-size: 2rem;
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .row {
+      flex-direction: column;
+    }
+  
+    .col-md-6 {
+      width: 100%;
+      margin-bottom: 2rem;
+    }
+  
+    table {
+      font-size: 0.9rem;
+    }
+  }
+  
