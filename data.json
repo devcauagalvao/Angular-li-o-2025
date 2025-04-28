@@ -3,11 +3,10 @@
   "courses": [
     {
       "id": 1,
-      "course": "sas"
-    },
-    {
-      "id": 2,
-      "course": "dsds"
+      "course": "caaaa",
+      "abbreviation": "aa",
+      "axis": "Tecnologia",
+      "schedule": "Matutino"
     }
   ]
 }

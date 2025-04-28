@@ -1,52 +1,188 @@
-
 <div class="container mt-4">
-    <div class="row">
-      <div class="col-md-6">
+  <div class="row">
+    <div class="col-md-6">
+      <form [formGroup]="formGroupCourse">
+        <div class="mb-3">
+          <label for="inputCourse" class="form-label"> <strong>Nome do Curso:</strong> </label>
+          <input formControlName="course" type="text" class="form-control" id="inputCourse"
+            aria-describedby="courseHelp" placeholder="Digite o nome completo do curso" />
+        </div>
+        <div class="mb-3">
+          <label for="inputAbbreviation" class="form-label"> <strong>Sigla do Curso:</strong> </label>
+          <input formControlName="abbreviation" type="text" class="form-control" id="inputAbbreviation"
+            aria-describedby="courseHelp" placeholder="Digite a sigla do curso" />
+        </div>
+        <div class="mb-3">
+          <label for="inputAxis" class="form-label"> <strong>Eixo Tecnológico:</strong> </label>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" formControlName="axis" name="axis" id="axis1"
+                  value="Tecnologia">
+                <label class="form-check-label" for="axis1">Tecnologia</label>
+              </div>
+
+              <div class="form-check">
+                <input class="form-check-input" type="radio" formControlName="axis" name="axis" id="axis2"
+                  value="Informação e Comunicação">
+                <label class="form-check-label" for="axis2">Informação e Comunicação</label>
+              </div>
+
+              <div class="form-check">
+                <input class="form-check-input" type="radio" formControlName="axis" name="axis" id="axis3"
+                  value="Produção Alimentícia">
+                <label class="form-check-label" for="axis3">Produção Alimentícia </label>
+              </div>
+
+              <div class="form-check">
+                <input class="form-check-input" type="radio" formControlName="axis" name="axis" id="axis4"
+                  value="Segurança">
+                <label class="form-check-label" for="axis4">Segurança</label>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" formControlName="axis" name="axis" id="axis5"
+                  value="Infraestrutura">
+                <label class="form-check-label" for="axis5">Infraestrutura</label>
+              </div>
+
+              <div class="form-check">
+                <input class="form-check-input" type="radio" formControlName="axis" name="axis" id="axis6"
+                  value="Controle e Processos Industriais">
+                <label class="form-check-label" for="axis6">Controle e Processos Industriais</label>
+              </div>
+
+              <div class="form-check">
+                <input class="form-check-input" type="radio" formControlName="axis" name="axis" id="axis7"
+                  value="Produção Cultural e Design">
+                <label class="form-check-label" for="axis7">Produção Cultural e Design</label>
+              </div>
+
+              <div class="form-check">
+                <input class="form-check-input" type="radio" formControlName="axis" name="axis" id="axis8"
+                  value="Turismo, Hospitalidade e Lazer">
+                <label class="form-check-label" for="axis8">Turismo, Hospitalidade e Lazer</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="inputAxis" class="form-label"> <strong>Período:</strong> </label>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" formControlName="schedule" name="schedule" id="schedule1"
+                  value="Matutino">
+                <label class="form-check-label" for="schedule1">Matutino</label>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" formControlName="schedule" name="schedule" id="schedule2"
+                  value="Vespertino">
+                <label class="form-check-label" for="schedule2">Vespertino</label>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" formControlName="schedule" name="schedule" id="schedule3"
+                  value="Noturno">
+                <label class="form-check-label" for="schedule3">Noturno</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" (click)="saveCourse()">
+          Salvar
+        </button>
+      </form>
+    </div>
+
+    <div class="col-md-6">
+      <h1>Cursos Cadastrados</h1>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome Completo</th>
+            <th scope="col">Sigla</th>
+            <th scope="col">Eixo</th>
+            <th scope="col">Período</th>
+            <th scope="col">Funções</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let c of Courses">
+            <th scope="row">{{ c.id }}</th>
+            <td>{{ c.course | slice:0:15 }}{{ c.course.length > 15 ? '...' : '' }}</td>
+            <td> {{ c.abbreviation }} </td>
+            <td> {{ c.axis | slice:0:10 }}{{ c.axis.length > 10 ? '...' : '' }} </td>
+            <td> {{ c.schedule }} </td>
+            <td class="icon-group">
+              <button class="btn delete-btn">
+                <span class="material-symbols-outlined" (click)="deleteCourse(c)">delete</span>
+              </button>
+              <button class="btn edit-btn">
+                <span class="material-symbols-outlined" (click)="editCourse(c)">edit</span>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="IsEditMode" class="modal fade show" tabindex="-1" style="display: block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Editar Curso</h5>
+        <button type="button" class="btn-close" data-dismiss="modal" (click)="closeEditMode()"></button>
+      </div>
+      <div class="modal-body">
         <form [formGroup]="formGroupCourse">
           <div class="mb-3">
-            <label for="inputCourse" class="form-label">Nome:</label>
-            <input
-              formControlName="course"
-              type="text"
-              class="form-control"
-              id="inputCourse"
-              aria-describedby="nameHelp"
-              placeholder="Digite o nome do curso"
-            />
+            <label for="inputCourse" class="form-label">Nome do Curso:</label>
+            <input formControlName="course" type="text" class="form-control"
+              placeholder="Digite o nome completo do curso" />
           </div>
-
-          <button type="submit" class="btn btn-primary" (click)="saveCourse()">
-            Salvar
-          </button>
+          <div class="mb-3">
+            <label for="inputAbbreviation" class="form-label">Sigla do Curso:</label>
+            <input formControlName="abbreviation" type="text" class="form-control"
+              placeholder="Digite a sigla do curso" />
+          </div>
+          <div class="mb-3">
+            <label for="inputAxis" class="form-label">Eixo Tecnológico:</label>
+            <select formControlName="axis" class="form-control">
+              <option value="Tecnologia">Tecnologia</option>
+              <option value="Gestão e Negócios">Gestão e Negócios</option>
+              <option value="Saúde">Saúde</option>
+              <option value="Ambiente e Saúde">Ambiente e Saúde</option>
+              <option value="Infraestrutura">Infraestrutura</option>
+              <option value="Produção Cultural e Design">Produção Cultural e Design</option>
+              <option value="Desenvolvimento Educacional e Social">Desenvolvimento Educacional e Social</option>
+              <option value="Controle e Processos Industriais">Controle e Processos Industriais</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="inputSchedule" class="form-label">Período:</label>
+            <select formControlName="schedule" class="form-control">
+              <option value="Matutino">Matutino</option>
+              <option value="Vespertino">Vespertino</option>
+              <option value="Noturno">Noturno</option>
+            </select>
+          </div>  
+          <button type="button" class="btn btn-primary" (click)="updateCourse()">Salvar</button>
         </form>
-      </div>
-  
-      <div class="col-md-6">
-        <h1>Cursos</h1>
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-             
-              <th scope="col">Curso</th>
-              <th scope="col">Funções</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let s of Courses">
-              <th scope="row">{{ s.id }}</th>
-              <td>{{ s.course }}</td>
-              <td class="icon-group">
-                <button class="btn delete-btn" (click)="deleteCourse(s)">
-                  <span class="material-symbols-outlined">delete</span>
-                </button>
-                <button class="btn edit-btn" (click)="updateCourse(s)">
-                  <span class="material-symbols-outlined">edit</span>
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
       </div>
     </div>
   </div>
+</div>

@@ -30,4 +30,11 @@ apiUrl = 'http://localhost:3000/courses';
   updateCourse(course:Course): Observable<Course> {
     return this.http.put<Course>(`${this.apiUrl}/${course.id}`, course);
   }
+  
+  editCourse(course: Course): Observable<Course> {
+    return this.http.put<Course>(`${this.apiUrl}/${course.id}`, course);
+  }
+
+  
+
 }
